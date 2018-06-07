@@ -7,7 +7,7 @@
 //
 
 
-
+#include <iostream>
 #include <clocale>
 
 template<typename D,typename K>
@@ -20,6 +20,7 @@ private:
     Node<D,K> * right;
     int hight;
     int childs;
+    int sum;
 public:
     //Copy constructor:
     Node(D data,K key) {
@@ -28,11 +29,12 @@ public:
         left = NULL;
         right = NULL;
         hight = 0;
-        childs=0;
+        childs=1;
+        sum=key;
     }
     //Constructor:
     Node() :
-            data(NULL),key(NULL), left(NULL), right(NULL), hight(0),childs(0){
+            data(NULL),key(NULL), left(NULL), right(NULL), hight(0),childs(1),sum(0){
     }
     //Copy constructor:
     Node(const Node<D,K>& nd) {
@@ -41,7 +43,9 @@ public:
         left = nd.left;
         right = nd.right;
         hight = nd.hight;
-        childs=0;
+        childs=nd.childs;
+        sum=nd.sum;
+
     }
     //Assignment operator:
     Node & operator=(const Node & nd) {
@@ -50,12 +54,14 @@ public:
         right = nd.right;
         hight = nd.hight;
         childs=nd.childs;
+        sum=nd.sum;
         return *this;
 
     }
     D get_data(){ return data; }
     K get_key(){ return key; }
     int get_childs(){ return childs; }
+    int get_sum(){ return sum; }
 
     //Destructor:
     ~Node() {
@@ -74,7 +80,7 @@ private:
     bool Is_Contain(Node<Data,Key>* root,Key key);
 
     //recursive inesrt
-    Node<Data,Key>* Insertion(Node<Data,Key>* cur_root, Data data,Key key);
+    Node<Data,Key>* Insertion(Node<Data,Key>* cur_root, Data data,Key key,Key sum);
 
     //hightCalcltion
     int hightCalc(Node<Data,Key>* node);
@@ -102,6 +108,7 @@ private:
     //helper function
     int getBalance(Node<Data,Key>* node);
     int checkHeight(Node<Data,Key> *node);
+    int check_child(Node<Data,Key> *node);
 
 public:
     //Constructor:
@@ -120,9 +127,22 @@ public:
     //getroot
     Node<Data,Key>* getRoot(){ return root;}
 
+    //Select
+    Data selcet(int index,Node<Data,Key> *node);
+
     //delete
     Node<Data,Key>* Delete(Key key);
 };
+
+/**
+ * helper function for calc
+ */
+template<typename Data,typename Key>
+int Avl_tree<Data, Key>::check_child(Node<Data,Key> *node){
+    if(node ==  NULL) return 0;
+    return node->get_childs();
+}
+
 
 
 /*----------------------------------------------------------------------------*/
@@ -143,7 +163,7 @@ Node<Data, Key>* Avl_tree<Data, Key>::Insert(Data data ,Key key) {
     if ((Is_Contain(root, key))) {
         return NULL;
     }
-    return root = Insertion(root, data,key);
+    return root = Insertion(root, data,key,key);
 
 }
 /*----------------------------------------------------------------------------*/
@@ -181,7 +201,7 @@ bool Avl_tree<Data,Key>::Is_Contain(Node<Data,Key>* root,Key key) {
  * The updated tree node.
  */
 template<typename Data,typename Key>
-Node<Data,Key>* Avl_tree<Data,Key>::Insertion(Node<Data,Key>* cur_root, Data data,Key key) {
+Node<Data,Key>* Avl_tree<Data,Key>::Insertion(Node<Data,Key>* cur_root, Data data,Key key,Key sum) {
     if (!cur_root) {
         cur_root = new Node<Data,Key>(data,key);
         return cur_root;
@@ -189,12 +209,14 @@ Node<Data,Key>* Avl_tree<Data,Key>::Insertion(Node<Data,Key>* cur_root, Data dat
 
     if (cur_root->key > key && (cur_root->left == NULL)) {
         cur_root->childs+=1;
+        cur_root->sum+=key;
         cur_root->left = new Node<Data,Key>(data,key);
         cur_root->hight = hightCalc(cur_root);
         return cur_root;
     }
     if (key > cur_root->key  && (cur_root->right == NULL)) {
         cur_root->childs+=1;
+        cur_root->sum+=key;
         cur_root->right = new Node<Data,Key>(data,key);
         cur_root->hight = hightCalc(cur_root);
         return cur_root;
@@ -203,10 +225,12 @@ Node<Data,Key>* Avl_tree<Data,Key>::Insertion(Node<Data,Key>* cur_root, Data dat
 
     if (key < cur_root->key) {
         cur_root->childs+=1;
-        cur_root->left = Insertion(cur_root->left, data,key);
+        cur_root->sum+=key;
+        cur_root->left = Insertion(cur_root->left, data,key,sum);
     } else if (key > cur_root->key) {
         cur_root->childs+=1;
-        cur_root->right = Insertion(cur_root->right,data,key);
+        cur_root->sum+=key;
+        cur_root->right = Insertion(cur_root->right,data,key,sum);
     } else {
         return cur_root;
     }
@@ -313,7 +337,25 @@ Node<Data,Key>* Avl_tree<Data,Key>::rightRotate(Node<Data,Key> *node) {
 
     temp->right = node;
     node->left = temp1_tree;
+    if(node->right) {
+        temp->childs += node->right->childs + 1;
+        temp->sum+=node->right->sum+node->key;
+        if(temp1_tree) {
+            node->childs = node->right->childs + temp1_tree->childs+1;
+            node->sum = node->right->sum + node->key + temp1_tree->sum;
+        }
+        else{
+            node->childs = node->right->childs+1;
+            node->sum = node->right->sum + node->key;
+        }
+    }
 
+    else{
+        temp->sum+=node->key;
+        temp->childs+=1;
+        node->sum=node->key;
+        node->childs=1;
+    }
     node->hight = hightCalc(node);
     temp->hight = hightCalc(temp);
 
@@ -334,7 +376,25 @@ Node<Data,Key> *Avl_tree<Data,Key>::leftRotate(Node<Data,Key> *node) {
 
     temp->left = node;
     node->right = big_tree;
+    if(node->left) {
+        temp->childs += node->left->childs + 1;
+        temp->sum+=node->left->sum+node->key;
+        if(big_tree) {
+            node->childs = node->left->childs + big_tree->childs+1;
+            node->sum = node->left->sum + node->key + big_tree->sum;
+        }
+        else{
+            node->childs = node->left->childs+1;
+            node->sum = node->left->sum + node->key;
+        }
 
+    }
+    else{
+        temp->sum+=node->key;
+        temp->childs+=1;
+        node->sum=node->key;
+        node->childs=1;
+    }
     node->hight = hightCalc(node);
     temp->hight = hightCalc(temp);
 
@@ -355,6 +415,7 @@ void Avl_tree<Data,Key>::inorder(Node<Data,Key>* node) {
     std::cout << "The Data --"<<node->get_data()<<std::endl;
     std::cout << "The Key --"<<node->get_key()<<std::endl;
     std::cout << "The childs --"<<node->get_childs()<<std::endl;
+    std::cout << " the sum of all bigger----"<<node->get_sum()<<std::endl;
     std::cout << "--------------------"<<std::endl;
 
     inorder(node->right);
@@ -416,6 +477,7 @@ int max(int a, int b)
 {
     return (a > b)? a : b;
 }
+
 /*----------------------------------------------------------------------------*/
 /**
  * Deletes a node in the tree starts in current_root, a recursive function.
@@ -512,6 +574,40 @@ void Avl_tree<Data,Key>::destroyTree(Node<Data,Key>* node)
         delete node;
     }
 }
+template<typename Data,typename Key>
+
+
+/*----------------------------------------------------------------------------*/
+
+/**
+ * Select - give from the tree the data that is in  the index of sorted array .
+ * parameters:
+ * @param node - Index.
+ * @return faulire NULL
+ */
+Data Avl_tree<Data,Key>:: selcet(int index,Node<Data,Key>* node) {
+    if (!node) return NULL;
+    if(index <=0||index>node->childs) return NULL;
+    int calc = check_child(node->left);
+    if (calc == index-1 ) {
+        return node->data;
+    }
+    else if (calc  < index-1) {
+        index = index-calc - 1;
+        return    selcet(index, node->right);
+    }
+    else {
+        //index = index - 1;
+        return    selcet(index, node->left);
+    }
+}
+
+
+
+
+
+
+
 
 
 #endif //HW2_DATA_STRUCURE_AVL_TREE_H
