@@ -109,8 +109,9 @@ private:
     int getBalance(Node<Data,Key>* node);
     int checkHeight(Node<Data,Key> *node);
     int check_child(Node<Data,Key> *node);
+    Key check_sum(Node<Data,Key> *node);
 
-public:
+        public:
     //Constructor:
     Avl_tree() : root(NULL) {
     };
@@ -128,7 +129,10 @@ public:
     Node<Data,Key>* getRoot(){ return root;}
 
     //Select
-    Data selcet(int index,Node<Data,Key> *node);
+    Key selcet(int index,Node<Data,Key> *node);
+
+    //rank
+    Key rank(Key key,Node<Data,Key> *node,Key sum);
 
     //delete
     Node<Data,Key>* Delete(Key key);
@@ -142,7 +146,11 @@ int Avl_tree<Data, Key>::check_child(Node<Data,Key> *node){
     if(node ==  NULL) return 0;
     return node->get_childs();
 }
-
+template<typename Data,typename Key>
+Key Avl_tree<Data, Key>::check_sum(Node<Data,Key> *node){
+    if(node ==  NULL) return NULL;
+    return node->get_sum();
+}
 
 
 /*----------------------------------------------------------------------------*/
@@ -585,12 +593,12 @@ template<typename Data,typename Key>
  * @param node - Index.
  * @return faulire NULL
  */
-Data Avl_tree<Data,Key>:: selcet(int index,Node<Data,Key>* node) {
+Key Avl_tree<Data,Key>:: selcet(int index,Node<Data,Key>* node) {
     if (!node) return NULL;
     if(index <=0||index>node->childs) return NULL;
     int calc = check_child(node->left);
     if (calc == index-1 ) {
-        return node->data;
+        return node->key;
     }
     else if (calc  < index-1) {
         index = index-calc - 1;
@@ -601,7 +609,28 @@ Data Avl_tree<Data,Key>:: selcet(int index,Node<Data,Key>* node) {
         return    selcet(index, node->left);
     }
 }
+/*----------------------------------------------------------------------------*/
 
+/**
+ * Rank - give from the tree the data that is in  the index of sorted array .
+ * parameters:
+ * @param node - Index.
+ * @return faulire NULL
+ */
+template<typename Data,typename Key>
+Key Avl_tree<Data,Key>::rank(Key key,Node<Data,Key>* node,Key sum){
+    if(!node) return NULL;
+    if( key > node->key){
+        return rank(key,node->right,sum);
+    }
+    else if ( key < node->key){
+        sum+=check_sum(node->right)+node->key;
+        return rank(key,node->left,sum);
+    }
+    else{
+        return sum+check_sum(node->right)+node->key;
+    }
+}
 
 
 
