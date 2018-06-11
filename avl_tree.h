@@ -111,7 +111,7 @@ private:
     int check_child(Node<Data,Key> *node);
     Key check_sum(Node<Data,Key> *node);
 
-        public:
+public:
     //Constructor:
     Avl_tree() : root(NULL) {
     };
@@ -120,6 +120,7 @@ private:
     ~Avl_tree() {destroyTree(root), root = NULL; }
 
     //inesrt
+    Node<Data, Key>* InsertOasis(Data data ,Key key);
     Node<Data, Key>* Insert(Data data ,Key key);
 
     //inorder
@@ -129,13 +130,14 @@ private:
     Node<Data,Key>* getRoot(){ return root;}
 
     //Select
-    Key selcet(int index,Node<Data,Key> *node);
+    Key selcet(int index,Node<Data,Key> *node,int sum);
 
     //rank
     Key rank(Key key,Node<Data,Key> *node,Key sum);
 
     //delete
     Node<Data,Key>* Delete(Key key);
+
 };
 
 /**
@@ -163,13 +165,31 @@ Key Avl_tree<Data, Key>::check_sum(Node<Data,Key> *node){
  * @reurn if is contain return NULL
  */
 template<typename Data,typename Key>
-Node<Data, Key>* Avl_tree<Data, Key>::Insert(Data data ,Key key) {
+Node<Data, Key>* Avl_tree<Data, Key>::InsertOasis(Data data ,Key key) {
     if (!root) {
         root = new Node<Data,Key>(data,key);
         return root;
     }
     if ((Is_Contain(root, key))) {
         return NULL;
+    }
+    return root = Insertion(root, data,key,key);
+
+}
+/*----------------------------------------------------------------------------*/
+/**
+ * Inserts a new node with data to the tree.
+ * parameters:
+ * @param data - Is the data to insert to the tree.
+ * @return
+ * The updated tree root.
+ * @reurn if is contain return NULL
+ */
+template<typename Data,typename Key>
+Node<Data, Key>* Avl_tree<Data, Key>::Insert(Data data ,Key key) {
+    if (!root) {
+        root = new Node<Data,Key>(data,key);
+        return root;
     }
     return root = Insertion(root, data,key,key);
 
@@ -240,7 +260,17 @@ Node<Data,Key>* Avl_tree<Data,Key>::Insertion(Node<Data,Key>* cur_root, Data dat
         cur_root->sum+=key;
         cur_root->right = Insertion(cur_root->right,data,key,sum);
     } else {
-        return cur_root;
+        if (data>cur_root->data){
+            cur_root->childs+=1;
+            cur_root->sum+=key;
+            cur_root->right = Insertion(cur_root->right,data,key,sum);
+        } else if (data<cur_root->data){
+            cur_root->childs+=1;
+            cur_root->sum+=key;
+            cur_root->left = Insertion(cur_root->left, data,key,sum);
+        } else {
+            return cur_root;
+        }
     }
 
     cur_root->hight = hightCalc(cur_root);
@@ -481,10 +511,10 @@ int Avl_tree<Data,Key>::checkHeight(Node<Data,Key>* node)
         return 0;
     return node->hight;
 }
-int max(int a, int b)
-{
-    return (a > b)? a : b;
-}
+/*----------------------------------------------------------------------------*/
+//int max(int a,int b) {
+//	return (a > b) ? a : b;
+//}
 
 /*----------------------------------------------------------------------------*/
 /**
@@ -593,20 +623,21 @@ template<typename Data,typename Key>
  * @param node - Index.
  * @return faulire NULL
  */
-Key Avl_tree<Data,Key>:: selcet(int index,Node<Data,Key>* node) {
+Key Avl_tree<Data,Key>:: selcet(int index,Node<Data,Key>* node,int sum) {
     if (!node) return NULL;
     if(index <=0||index>node->childs) return NULL;
     int calc = check_child(node->left);
     if (calc == index-1 ) {
-        return node->key;
+        return sum+check_sum(node->right)+node->key;
     }
     else if (calc  < index-1) {
         index = index-calc - 1;
-        return    selcet(index, node->right);
+        return    selcet(index, node->right,sum);
     }
     else {
         //index = index - 1;
-        return    selcet(index, node->left);
+        sum+=check_sum(node->right)+node->key;
+        return    selcet(index, node->left,sum);
     }
 }
 /*----------------------------------------------------------------------------*/

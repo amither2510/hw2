@@ -198,7 +198,7 @@ void Heap::Delete_min(){
     arr[1] = arr[valid_size];
     valid_size--;
     if (valid_size > 0)
-        for(int temp=1;temp<valid_size/2;temp++){
+        for(int temp=1;temp<valid_size;temp++){
             sift_down_array(temp);
         }
 }
