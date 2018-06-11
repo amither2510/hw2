@@ -3,10 +3,24 @@
 using namespace std;
 
 
+/**
+ * constructor of the Arrayheap
+ */
 ArrayHeap:: ArrayHeap():clan_id(0),index(0){}
+
+/**
+ * constructor of the Arrayheap
+ */
 ArrayHeap::ArrayHeap(int id): clan_id(id),index(0){}
+
+/**
+ * destructor of the Arrayheap
+ */
 ArrayHeap::~ArrayHeap(){}
 
+/**
+ * Destroy the heap
+ */
 void Heap::DestroyHeap(){
 
     if(arr) {
@@ -17,15 +31,26 @@ void Heap::DestroyHeap(){
     }
 }
 
+/**
+ * destructor the heap
+ */
 Heap::~Heap(){
     DestroyHeap();
 }
 
-void ArrayHeap::SetClanIdToNil(){}
-
+/**
+ *  Create heap node
+ * @param clan_id  the number of id of the clan to insert
+ * @return the node to insert
+ */
 ArrayHeap* Heap::CreateTempHeapClan(int clan_id) {
     return (new ArrayHeap(clan_id));
 }
+/**
+ *   Add Clan to the heap
+ * @param temp_heap_clan  - the node that is inside of the info of the clan
+ * fix the tree and add clan
+ */
 void Heap::AddClan(ArrayHeap* temp_heap_clan) {
     if(valid_size==size){
         increment_array();
@@ -38,7 +63,13 @@ void Heap::AddClan(ArrayHeap* temp_heap_clan) {
     }
 }
 
-//delete node
+/**
+ *  delete node from heap from a given pointer
+ * @param node - the node that need to delete
+ * 1) decress clan id to -1
+ * 2) then sift up to the root
+ * 3) delete min
+ */
 void Heap::deleteHeap(ArrayHeap* node){
     if(!node) return;
     node->clan_id=-1;
@@ -48,14 +79,26 @@ void Heap::deleteHeap(ArrayHeap* node){
     Delete_min();
 
 }
-
+/**
+ * constructor of heap
+ */
 Heap::Heap() :arr(NULL),size(0),valid_size(0){}
 
+/**
+ *  return the min in the heap-
+ * @return  the min in the heap
+ */
 int Heap::GetMinClanId(){
     if(!arr) return -1;
     return arr[1]->clan_id;
 }
 
+/**
+ *  swap to element in the array
+ * @param index1 the index of the elemenet1 in the array
+ * @param index2 the index of the elemenet2 in the array
+ * swap also the index
+ */
 void Heap::swap(int index1,int index2) {
     ArrayHeap *elem1 = arr[index1];
     ArrayHeap *elem2 = arr[index2];
@@ -67,6 +110,10 @@ void Heap::swap(int index1,int index2) {
     arr[index2] = elem1;
 }
 
+/**
+ *  constructor that get size amd init array in the size
+ * @param size
+ */
 Heap::Heap(int size):size(size){
     arr=new ArrayHeap*[size+1];
     valid_size=0;
@@ -75,8 +122,10 @@ Heap::Heap(int size):size(size){
     }
 }
 
-
-// helper function to fix the tree
+/**
+ *  sift down fix the tree that will be valid in the tree
+ * @param key the strating index that need to fix
+ */
 void Heap::sift_down_array(int key) {
 
     int left_son = 2 * key;
@@ -98,7 +147,10 @@ void Heap::sift_down_array(int key) {
 
 }
 
-
+/**
+ *  sift up fix the tree that will be valid in the tree
+ * @param key the strating index that need to fix
+ */
 void Heap::sift_up_array(int key) {
 
     int left_son = 2 * key;
@@ -136,9 +188,10 @@ void Heap::sift_up_array(int key) {
 }
 
 
-
-
-
+/**
+ * Delete the Min
+ *  helper function for delete node
+ */
 void Heap::Delete_min(){
     if(valid_size == 0) return;
     delete(arr[1]);
@@ -150,6 +203,9 @@ void Heap::Delete_min(){
         }
 }
 
+/**
+ * Print the heap
+ */
 void Heap::PrintHeap() {
     cout << "--------------------------" << endl;
     cout << "size = " << size << endl;
@@ -160,6 +216,9 @@ void Heap::PrintHeap() {
     }
 }
 
+/**
+ * increment the array for dynmic array
+ */
 void Heap::increment_array(){
     ArrayHeap** temp = NULL;
     int size=this->size;
