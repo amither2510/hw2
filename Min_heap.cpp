@@ -72,8 +72,13 @@ void Heap::AddClan(ArrayHeap* temp_heap_clan) {
  */
 void Heap::deleteHeap(ArrayHeap* node){
     if(!node) return;
+    if(node->index == valid_size){
+        delete(arr[valid_size]);
+        valid_size--;
+        return;
+    }
     node->clan_id=-1;
-    for(int temp=node->index;temp>0;temp--){
+    for(int temp=valid_size;temp>0;temp--){
             sift_down_array(temp);
     }
     Delete_min();
@@ -89,7 +94,7 @@ Heap::Heap() :arr(NULL),size(0),valid_size(0){}
  * @return  the min in the heap
  */
 int Heap::GetMinClanId(){
-    if(!arr) return -1;
+    if(!arr) return -2;
     return arr[1]->clan_id;
 }
 

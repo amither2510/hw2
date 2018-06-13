@@ -22,8 +22,6 @@ DynamicHash::~DynamicHash(){
 }
 /*----------------------------------------------------------------------------*/
 HASH_RESULT DynamicHash::HashInsertClan(int clan_id,ArrayHeap* heap_clan){
-    cout<<"adding clan_id--------------------------------------------"<<clan_id<<endl;
-    PrintHash();
     if (clan_id<0){
         return HASH_INVALID_INPUT;
     }
@@ -37,21 +35,10 @@ HASH_RESULT DynamicHash::HashInsertClan(int clan_id,ArrayHeap* heap_clan){
     if (array[index]->ListInsertClan(clan_id,heap_clan)==LIST_ALLOCATION_ERROR){
         return HASH_ALLOCATION_ERROR;
     }
-
     number_elements++;
     if (number_elements==table_size){
-        if (HashExtend(array,table_size)==HASH_ALLOCATION_ERROR){
-            return HASH_ALLOCATION_ERROR;
-        }
-
+        enlargeArray();
     }
-    PrintHash();
-   /* if (number_elements==table_size/4){
-        if (HashReduce(array,table_size)==HASH_ALLOCATION_ERROR){
-            return HASH_ALLOCATION_ERROR;
-        }
-    }
-    */
     return HASH_CLAN_ADDED;
 }
 /*----------------------------------------------------------------------------*/
@@ -80,7 +67,7 @@ Clan* DynamicHash::ReturnClan(int clan_id) {
     return NULL;
 }
 /*----------------------------------------------------------------------------*/
-HASH_RESULT DynamicHash::DynamicHashInsertClan(int clan_id,ArrayHeap* heap_clan){
+HASH_RESULT DynamicHash::DynamicHashInsertClan(int clan_id,ArrayHeap* heap_clan,Clan* clan){
     if (clan_id<0){
         return HASH_INVALID_INPUT;
     }
@@ -88,7 +75,7 @@ HASH_RESULT DynamicHash::DynamicHashInsertClan(int clan_id,ArrayHeap* heap_clan)
     if (!array[index]){
         array[index]=new List;
     }
-    if (array[index]->ListInsertClan(clan_id,heap_clan)==LIST_ALLOCATION_ERROR){
+    if (array[index]->ListInsertClan1(clan_id,heap_clan,clan)==LIST_ALLOCATION_ERROR){
         return HASH_ALLOCATION_ERROR;
     }
 
@@ -127,8 +114,11 @@ HASH_RESULT DynamicHash::HashExtend(List** old_array,int old_size){
             }
             //array[i]=new List;
             while (current_node) {
-                DynamicHashInsertClan(current_node->GetClanId(),current_node->GetClan()->GetHeapClan());
+
+                DynamicHashInsertClan(current_node->GetClanId(),current_node->GetClan()->GetHeapClan(),current_node->GetClan());
+                ListNode* temp=current_node;
                 current_node = current_node->GetNextNode();
+                temp=NULL;
             }
             delete old_array[i];
         }
@@ -137,41 +127,7 @@ HASH_RESULT DynamicHash::HashExtend(List** old_array,int old_size){
     number_elements=old_num_elements;
     return HASH_EXTENDED;
 }
-/*----------------------------------------------------------------------------*/
-HASH_RESULT DynamicHash::HashReduce(List** old_array,int old_size){
-    int new_size=old_size/2;
-    int old_num_elements=number_elements;
-    List** new_array=NULL;
-    try {
-        new_array=new List*[new_size];
-        for (int i=0;i<new_size;i++){
-            new_array[i]=NULL;
-        }
-    } catch (std::bad_alloc &) {
-        return HASH_ALLOCATION_ERROR;
-    }
 
-    array=new_array;
-    table_size=new_size;
-
-    for (int i = 0; i < old_size; i++) {
-        if (old_array[i]) {
-            ListNode* current_node = old_array[i]->GetHead();
-            if (!current_node) {
-                continue;
-            }
-            //array[i]=new List;
-            while (current_node) {
-                DynamicHashInsertClan(current_node->GetClanId(),current_node->GetClan()->GetHeapClan());
-                current_node = current_node->GetNextNode();
-            }
-            delete old_array[i];
-        }
-    }
-    delete[] old_array;
-    number_elements=old_num_elements;
-    return HASH_REDUCED;
-}
 /*----------------------------------------------------------------------------*/
 HASH_RESULT DynamicHash::HashInsertPlayer(int clan_id, int player_id,
                                           int score) {
@@ -285,7 +241,6 @@ HASH_RESULT DynamicHash::HashFight(int clan1, int clan2, int k1, int k2,ArrayHea
         return HASH_FIGHT_FAILURE;
     }
     if ((!DoesContain(clan1))||(!DoesContain(clan2))){
-        cout<<"failed does not contain"<<endl;
         return HASH_FIGHT_FAILURE;
     }
 
@@ -300,12 +255,9 @@ HASH_RESULT DynamicHash::HashFight(int clan1, int clan2, int k1, int k2,ArrayHea
     HashGetClanData(clan2, k2, clan2_validity, clan2_players_sum, clan2_players);
 
     if ((clan1_validity==false)||(clan2_validity==false)){
-        cout<<"failed validity"<<endl;
         return HASH_FIGHT_FAILURE;
     }
     if ((clan1_players<k1)||(clan2_players<k2)){
-     //   cout<<"number of players 1---"<<clan1_players<<"number of players 2---"<<clan2_players<<endl;
-        cout<<"failed num of players"<<endl;
         return HASH_FIGHT_FAILURE;
     }
 
@@ -339,6 +291,25 @@ int DynamicHash::GetNumClans(){
     return number_elements;
 }
 /*----------------------------------------------------------------------------*/
+void DynamicHash::enlargeArray(){
+    int new_size=table_size*2;
+    List** new_array=NULL;
+    try {
+        new_array=new List*[new_size];
+        for (int i=0;i<new_size;i++){
+            new_array[i]=NULL;
+        }
+    } catch (std::bad_alloc &){
+        return;
+    }
+    for(int i=0;i<table_size;i++){
+        new_array[i]=array[i];
+        array[i]=NULL;
+    }
+    delete[] array;
+    array=new_array;
 
+
+}
 
 

@@ -21,6 +21,7 @@ private:
     ListNode* next;
 public:
     ListNode(int clan_id,ArrayHeap* heap_clan);
+    ListNode(Clan* clan);
     ~ListNode();
     int GetClanId();
     ListNode* GetNextNode();
@@ -35,6 +36,9 @@ private:
 public:
     List();
     ~List();
+    List(const List& lst);
+    void setNull();
+    LIST_RESULT ListInsertClan1(int clan_id,ArrayHeap* heap_clan,Clan* clan);
     LIST_RESULT ListInsertClan(int clan_id,ArrayHeap* heap_clan);
     LIST_RESULT ListInsertPlayer(int clan_id,int player_id,int score);
     bool DoesContain(int clan_id);

@@ -3,6 +3,7 @@
 
 /*-------------------------------Node-----------------------------------------*/
 ListNode::ListNode(int clan_id,ArrayHeap* heap_clan):clan(new Clan(clan_id,heap_clan)),next(NULL){}
+ListNode::ListNode(Clan* clan):clan(clan),next(NULL){}
 
 /*----------------------------------------------------------------------------*/
 ListNode::~ListNode(){
@@ -30,11 +31,21 @@ List::~List(){
         }
     }
 }
+List::List(const List& lst){
+    this->head=lst.head;
+}
+
 /*----------------------------------------------------------------------------*/
 void ListNode::SetNextNode(ListNode* node){
     next=node;
 }
 /*----------------------------------------------------------------------------*/
+void List::setNull(){
+    Clan* clan=this->head->GetClan();
+    clan->setNull();
+    this->head=NULL;
+}
+
 
 LIST_RESULT List::ListInsertClan(int clan_id,ArrayHeap* heap_clan) {
     if (!head) {
@@ -51,6 +62,31 @@ LIST_RESULT List::ListInsertClan(int clan_id,ArrayHeap* heap_clan) {
             }
             ListNode* temp_node = head;
             head=new ListNode(clan_id,heap_clan);
+            head->SetNextNode(temp_node);
+        } catch (std::bad_alloc &) {
+            return LIST_ALLOCATION_ERROR;
+        }
+    }
+    return LIST_CLAN_ADDED;
+}
+
+LIST_RESULT List::ListInsertClan1(int clan_id,ArrayHeap* heap_clan,Clan* clan) {
+    if (!head) {
+        try {
+            // head=new ListNode(clan_id,heap_clan);
+            head=new ListNode(clan);
+            head->SetNextNode(NULL);
+        } catch (std::bad_alloc &) {
+            return LIST_ALLOCATION_ERROR;
+        }
+    } else {
+        try {
+            if (DoesContain(clan_id)){
+                return LIST_CLAN_ALREADY_EXISTS;
+            }
+            ListNode* temp_node = head;
+            // head=new ListNode(clan_id,heap_clan);
+            head=new ListNode(clan);
             head->SetNextNode(temp_node);
         } catch (std::bad_alloc &) {
             return LIST_ALLOCATION_ERROR;

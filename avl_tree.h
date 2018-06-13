@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <clocale>
+#include <cmath>
 
 template<typename D,typename K>
 class Node {
@@ -110,8 +111,9 @@ private:
     int checkHeight(Node<Data,Key> *node);
     int check_child(Node<Data,Key> *node);
     Key check_sum(Node<Data,Key> *node);
+    int max(int a,int b);
 
-public:
+        public:
     bool Is_Contain(Node<Data,Key>* root,Key key);
 
     //Constructor:
@@ -514,9 +516,10 @@ int Avl_tree<Data,Key>::checkHeight(Node<Data,Key>* node)
     return node->hight;
 }
 /*----------------------------------------------------------------------------*/
-//int max(int a,int b) {
-//	return (a > b) ? a : b;
-//}
+template<typename Data,typename Key>
+int Avl_tree<Data,Key>::max(int a,int b) {
+	return (a > b) ? a : b;
+}
 
 /*----------------------------------------------------------------------------*/
 /**

@@ -32,12 +32,12 @@ public:
     DynamicHash(int initial_size);
     ~DynamicHash();
     HASH_RESULT HashInsertClan(int clan_id,ArrayHeap* heap_clan);
-    HASH_RESULT DynamicHashInsertClan(int clan_id,ArrayHeap* heap_clan);
+    HASH_RESULT DynamicHashInsertClan(int clan_id,ArrayHeap* heap_clan,Clan* clan);
     HASH_RESULT HashInsertPlayer(int clan_id,int player_id,int score);
     bool DoesContain(int clan_id);
     bool DoesContainPlayer(int player_id);
     HASH_RESULT HashExtend(List** old_array,int old_size);
-    HASH_RESULT HashReduce(List** old_array,int old_size);
+   // HASH_RESULT HashReduce(List** old_array,int old_size);
     void PrintHash();
     void PrintHashResult(HASH_RESULT res);
     void HashGetClanData(int clan_id,int num_players_to_sum,bool& validity,int& players_sum,int& num_of_clans_players);
@@ -45,6 +45,7 @@ public:
     ArrayHeap* ClanLost(int clan_id);
     Clan* ReturnClan(int clan_id);
     int GetNumClans();
+    void enlargeArray();
 };
 
 

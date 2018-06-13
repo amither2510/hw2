@@ -23,6 +23,7 @@ private:
 public:
     Clan(int new_clan_id,ArrayHeap* heap_node);
     ~Clan();
+    void setNull();
     int GetClanId();
     bool GetValidity();
     ArrayHeap* GetHeapClan();

@@ -60,7 +60,10 @@ ArrayHeap* Clan::GetHeapClan(){
     return heap_clan;
 }
 /*----------------------------------------------------------------------------*/
-
+void Clan::setNull(){
+    this->heap_clan=NULL;
+    this->players=NULL;
+}
 
 
 
