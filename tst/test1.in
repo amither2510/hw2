@@ -1,0 +1,32 @@
+init 2 0 1 
+addPlayer 85 600 5
+clanFight 8 2 3 0
+getMinClan
+addPlayer 435 501 7
+getMinClan
+addPlayer 34 541 5
+getMinClan
+addClan 2
+getMinClan
+getMinClan
+addPlayer 726 72 0
+addPlayer 634 227 -2
+clanFight 5 6 1 8
+clanFight 7 5 -1 5
+addClan 7
+addClan 3
+addClan -1
+addPlayer 928 328 4
+addPlayer -4 676 4
+addPlayer 747 684 2
+getMinClan
+getMinClan
+getMinClan
+getMinClan
+addClan -1
+getMinClan
+clanFight 0 2 1 1
+addPlayer 34 421 8
+addClan 5
+clanFight 1 -1 1 5
+quit

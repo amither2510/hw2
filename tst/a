@@ -1,0 +1,18 @@
+#!/bin/bash
+
+while [ 1 ]
+do
+python ./OasisTest.py 30 test1
+./hw2 <test1.in >abc
+diff abc test1.out > diff_res
+if [ -s diff_res ]
+then
+echo "not"
+break;	
+fi
+done
+
+
+
+
+

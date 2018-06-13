@@ -1,0 +1,32 @@
+init done.
+addPlayer: FAILURE
+clanFight: INVALID_INPUT
+getMinClan: SUCCESS 0
+addPlayer: FAILURE
+getMinClan: SUCCESS 0
+addPlayer: FAILURE
+getMinClan: SUCCESS 0
+addClan: SUCCESS
+getMinClan: SUCCESS 0
+getMinClan: SUCCESS 0
+addPlayer: SUCCESS
+addPlayer: INVALID_INPUT
+clanFight: FAILURE
+clanFight: INVALID_INPUT
+addClan: SUCCESS
+addClan: SUCCESS
+addClan: INVALID_INPUT
+addPlayer: FAILURE
+addPlayer: INVALID_INPUT
+addPlayer: SUCCESS
+getMinClan: SUCCESS 0
+getMinClan: SUCCESS 0
+getMinClan: SUCCESS 0
+getMinClan: SUCCESS 0
+addClan: INVALID_INPUT
+getMinClan: SUCCESS 0
+clanFight: SUCCESS
+addPlayer: FAILURE
+addClan: SUCCESS
+clanFight: INVALID_INPUT
+quit done.
