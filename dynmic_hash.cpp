@@ -22,6 +22,8 @@ DynamicHash::~DynamicHash(){
 }
 /*----------------------------------------------------------------------------*/
 HASH_RESULT DynamicHash::HashInsertClan(int clan_id,ArrayHeap* heap_clan){
+    cout<<"adding clan_id--------------------------------------------"<<clan_id<<endl;
+    PrintHash();
     if (clan_id<0){
         return HASH_INVALID_INPUT;
     }
@@ -41,14 +43,15 @@ HASH_RESULT DynamicHash::HashInsertClan(int clan_id,ArrayHeap* heap_clan){
         if (HashExtend(array,table_size)==HASH_ALLOCATION_ERROR){
             return HASH_ALLOCATION_ERROR;
         }
-    }
 
-    if (number_elements==table_size/4){
+    }
+    PrintHash();
+   /* if (number_elements==table_size/4){
         if (HashReduce(array,table_size)==HASH_ALLOCATION_ERROR){
             return HASH_ALLOCATION_ERROR;
         }
     }
-
+    */
     return HASH_CLAN_ADDED;
 }
 /*----------------------------------------------------------------------------*/
@@ -282,6 +285,7 @@ HASH_RESULT DynamicHash::HashFight(int clan1, int clan2, int k1, int k2,ArrayHea
         return HASH_FIGHT_FAILURE;
     }
     if ((!DoesContain(clan1))||(!DoesContain(clan2))){
+        cout<<"failed does not contain"<<endl;
         return HASH_FIGHT_FAILURE;
     }
 
@@ -296,9 +300,12 @@ HASH_RESULT DynamicHash::HashFight(int clan1, int clan2, int k1, int k2,ArrayHea
     HashGetClanData(clan2, k2, clan2_validity, clan2_players_sum, clan2_players);
 
     if ((clan1_validity==false)||(clan2_validity==false)){
+        cout<<"failed validity"<<endl;
         return HASH_FIGHT_FAILURE;
     }
     if ((clan1_players<k1)||(clan2_players<k2)){
+     //   cout<<"number of players 1---"<<clan1_players<<"number of players 2---"<<clan2_players<<endl;
+        cout<<"failed num of players"<<endl;
         return HASH_FIGHT_FAILURE;
     }
 

@@ -67,10 +67,16 @@ StatusType Oasis::OasisAddClan(int clanID) {
 /*----------------------------------------------------------------------------*/
 StatusType Oasis::OasisAddPlayer(int playerID, int score, int clan) {
     HASH_RESULT res = INITIAL;
-    if (!oasis_players->InsertOasis(playerID,playerID)){
+    if(oasis_players->Is_Contain(oasis_players->getRoot(),playerID)){
         return FAILURE;
     }
     res = hash_table->HashInsertPlayer(clan, playerID, score);
+    if (res!=HASH_PLAYER_ADDED){
+        return (ConvertResult(res, ADD_PLAYER));
+    }
+    if (!oasis_players->InsertOasis(playerID,playerID)){
+        return ALLOCATION_ERROR;
+    }
     return (ConvertResult(res, ADD_PLAYER));
 }
 /*----------------------------------------------------------------------------*/
@@ -83,7 +89,7 @@ StatusType Oasis::OasisClanFight(int clan1, int clan2, int k1, int k2){
     }
     return (ConvertResult(res,CLAN_FIGHT));
 
-    return FAILURE;
+   // return FAILURE;
 }
 /*----------------------------------------------------------------------------*/
 Oasis::Oasis(int n, int *clanIDs,StatusType& status){
@@ -111,14 +117,9 @@ StatusType Oasis::OasisGetMinClan(int *clan){
 }
 /*----------------------------------------------------------------------------*/
 Oasis::~Oasis(){
-    cout<<endl;
-    cout<<"Deleting System:"<<endl;
     delete hash_table;
-    cout<<"Hash Deleted"<<endl;
     delete heap;
-    cout<<"Heap Deleted"<<endl;
     delete oasis_players;
-    cout<<"Avl_Tree Deleted"<<endl;
 }
 /*----------------------------------------------------------------------------*/
 void Oasis::OasisPrint(){
@@ -126,6 +127,8 @@ void Oasis::OasisPrint(){
     hash_table->PrintHash();
     cout<<"Printing Heap:"<<endl;
     heap->PrintHeap();
+   // cout<<"Printing System:"<<endl;
+   // heap->PrintHeap();
 }
 /*----------------------------------------------------------------------------*/
 void Oasis::OasisPrintActionResult(StatusType result){

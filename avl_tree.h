@@ -72,12 +72,12 @@ public:
 //Generic Avl_tree Class:
 template<typename Data,typename Key>
 class Avl_tree {
+
 private:
 
     Node<Data, Key> *root;
 
     //Is Contain
-    bool Is_Contain(Node<Data,Key>* root,Key key);
 
     //recursive inesrt
     Node<Data,Key>* Insertion(Node<Data,Key>* cur_root, Data data,Key key,Key sum);
@@ -112,6 +112,8 @@ private:
     Key check_sum(Node<Data,Key> *node);
 
 public:
+    bool Is_Contain(Node<Data,Key>* root,Key key);
+
     //Constructor:
     Avl_tree() : root(NULL) {
     };
