@@ -1,0 +1,915 @@
+Printing Hash:
+--------------------------
+Table size = 2
+Table Elements = 1
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 1
+--------------------------
+clan[1] =0
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 2
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 2
+--------------------------
+clan[1] =0
+clan[2] =1
+init done.
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 2
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 2
+--------------------------
+clan[1] =0
+clan[2] =1
+addPlayer: FAILURE
+clanFight: INVALID_INPUT
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 2
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 2
+--------------------------
+clan[1] =0
+clan[2] =1
+getMinClan: SUCCESS 0
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 2
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 2
+--------------------------
+clan[1] =0
+clan[2] =1
+addPlayer: FAILURE
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 2
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 2
+--------------------------
+clan[1] =0
+clan[2] =1
+getMinClan: SUCCESS 0
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 2
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 2
+--------------------------
+clan[1] =0
+clan[2] =1
+addPlayer: FAILURE
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 2
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 2
+--------------------------
+clan[1] =0
+clan[2] =1
+getMinClan: SUCCESS 0
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 3
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 3
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+addClan: SUCCESS
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 3
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 3
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+getMinClan: SUCCESS 0
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 3
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 3
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+getMinClan: SUCCESS 0
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 3
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+The Node:
+The Data --726
+The Key --72
+The childs --1
+ the sum of all bigger----72
+--------------------
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 3
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+addPlayer: SUCCESS
+addPlayer: INVALID_INPUT
+failed does not contain
+Printing Hash:
+--------------------------
+Table size = 4
+Table Elements = 3
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+The Node:
+The Data --726
+The Key --72
+The childs --1
+ the sum of all bigger----72
+--------------------
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 3
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clanFight: FAILURE
+clanFight: INVALID_INPUT
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 4
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 4
+valid size= = 4
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+addClan: SUCCESS
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+addClan: SUCCESS
+addClan: INVALID_INPUT
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+addPlayer: FAILURE
+addPlayer: INVALID_INPUT
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+The Node:
+The Data --747
+The Key --684
+The childs --1
+ the sum of all bigger----684
+--------------------
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+addPlayer: SUCCESS
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+The Node:
+The Data --747
+The Key --684
+The childs --1
+ the sum of all bigger----684
+--------------------
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+getMinClan: SUCCESS 0
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+The Node:
+The Data --747
+The Key --684
+The childs --1
+ the sum of all bigger----684
+--------------------
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+getMinClan: SUCCESS 0
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+The Node:
+The Data --747
+The Key --684
+The childs --1
+ the sum of all bigger----684
+--------------------
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+getMinClan: SUCCESS 0
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+The Node:
+The Data --747
+The Key --684
+The childs --1
+ the sum of all bigger----684
+--------------------
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+getMinClan: SUCCESS 0
+addClan: INVALID_INPUT
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+The Node:
+The Data --747
+The Key --684
+The childs --1
+ the sum of all bigger----684
+--------------------
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+getMinClan: SUCCESS 0
+failed num of players
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+The Node:
+The Data --747
+The Key --684
+The childs --1
+ the sum of all bigger----684
+--------------------
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+clanFight: FAILURE
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 5
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+The Node:
+The Data --747
+The Key --684
+The childs --1
+ the sum of all bigger----684
+--------------------
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 5
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+addPlayer: FAILURE
+Printing Hash:
+--------------------------
+Table size = 8
+Table Elements = 6
+--------------------------
+Clans in Table[0] are:
+**************************Clan[0] = 0
+Validity = 1
+Its Players:
+-------
+Clans in Table[1] are:
+**************************Clan[0] = 1
+Validity = 1
+Its Players:
+-------
+Clans in Table[2] are:
+**************************Clan[0] = 2
+Validity = 1
+Its Players:
+The Node:
+The Data --747
+The Key --684
+The childs --1
+ the sum of all bigger----684
+--------------------
+-------
+Clans in Table[3] are:
+**************************Clan[0] = 3
+Validity = 1
+Its Players:
+-------
+Clans in Table[5] are:
+**************************Clan[0] = 5
+Validity = 1
+Its Players:
+-------
+Clans in Table[7] are:
+**************************Clan[0] = 7
+Validity = 1
+Its Players:
+-------
+
+Printing Heap:
+--------------------------
+size = 8
+valid size= = 6
+--------------------------
+clan[1] =0
+clan[2] =1
+clan[3] =2
+clan[4] =7
+clan[5] =3
+clan[6] =5
+addClan: SUCCESS
+clanFight: INVALID_INPUT
+quit done.
