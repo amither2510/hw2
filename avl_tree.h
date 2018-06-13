@@ -110,7 +110,7 @@ private:
     int getBalance(Node<Data,Key>* node);
     int checkHeight(Node<Data,Key> *node);
     int check_child(Node<Data,Key> *node);
-    Key check_sum(Node<Data,Key> *node);
+    int check_sum(Node<Data,Key> *node);
     int max(int a,int b);
 
         public:
@@ -134,7 +134,7 @@ private:
     Node<Data,Key>* getRoot(){ return root;}
 
     //Select
-    Key selcet(int index,Node<Data,Key> *node,int sum);
+    int selcet(int index,Node<Data,Key> *node,int sum);
 
     //rank
     Key rank(Key key,Node<Data,Key> *node,Key sum);
@@ -153,8 +153,8 @@ int Avl_tree<Data, Key>::check_child(Node<Data,Key> *node){
     return node->get_childs();
 }
 template<typename Data,typename Key>
-Key Avl_tree<Data, Key>::check_sum(Node<Data,Key> *node){
-    if(node ==  NULL) return NULL;
+int Avl_tree<Data, Key>::check_sum(Node<Data,Key> *node){
+    if(!node) return 0;
     return node->get_sum();
 }
 
@@ -628,9 +628,9 @@ template<typename Data,typename Key>
  * @param node - Index.
  * @return faulire NULL
  */
-Key Avl_tree<Data,Key>:: selcet(int index,Node<Data,Key>* node,int sum) {
-    if (!node) return NULL;
-    if(index <=0||index>node->childs) return NULL;
+int Avl_tree<Data,Key>:: selcet(int index,Node<Data,Key>* node,int sum) {
+    if (!node) return -1;
+    if(index <=0||index>node->childs) return -1;
     int calc = check_child(node->left);
     if (calc == index-1 ) {
         return sum+check_sum(node->right)+node->key;
@@ -640,7 +640,6 @@ Key Avl_tree<Data,Key>:: selcet(int index,Node<Data,Key>* node,int sum) {
         return    selcet(index, node->right,sum);
     }
     else {
-        //index = index - 1;
         sum+=check_sum(node->right)+node->key;
         return    selcet(index, node->left,sum);
     }

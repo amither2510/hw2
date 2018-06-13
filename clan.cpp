@@ -51,8 +51,6 @@ int Clan::GetSumOfBestPlayers(int num){
         return 0;
     }
     int sum=players->selcet(num_of_players-num+1, players->getRoot(),0);
-    //cout <<"The player is:"<<sum<<endl;
-
     return sum;
 }
 /*----------------------------------------------------------------------------*/
