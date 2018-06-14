@@ -3,7 +3,7 @@
 
 #include "dynmic_hash.h"
 #include "Min_heap.h"
-#include "libary2.h"
+#include "library2.h"
 
 class Oasis {
 private:
