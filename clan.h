@@ -8,9 +8,6 @@
 typedef enum clan_result{
     PLAYER_ALREADY_EXIST,
     PLAYER_ADDED,
-    //CLAN_ALLOCATION_ERROR,
-    //LIST_CLAN_ADDED,
-    //LIST_CLAN_ALREADY_EXISTS,
 }CLAN_RESULT;
 
 class Clan {
@@ -20,17 +17,37 @@ private:
     Avl_tree<int, int>* players;
     int num_of_players;
     ArrayHeap* heap_clan;
+
 public:
+    // constructor & destrcutor
     Clan(int new_clan_id,ArrayHeap* heap_node);
     ~Clan();
+
+    // set null all field
     void setNull();
+
+    //get Clan-id
     int GetClanId();
+
+    // get Validty
     bool GetValidity();
+
+    // get HeapClan
     ArrayHeap* GetHeapClan();
+
+    //setter set heap false
     ArrayHeap* SetValidityToFalse();
+
+    // get NunPlayers
     int GetNumOfPlayers();
+
+    // GetSumOf best Players
     int GetSumOfBestPlayers(int num);
+
+    // get Players in tree
     Avl_tree<int, int>* GetPlayers();
+
+    //add Player to clan
     CLAN_RESULT AddPlayer(int player_id,int score);
 };
 

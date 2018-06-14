@@ -9,7 +9,15 @@ typedef enum {
     CLAN_FIGHT = 2
 } CONVERT_TYPE;
 
+
+
 /*----------------------------------------------------------------------------*/
+/**
+ *  Convert Result of the hash to the result that we need to return in sys
+ * @param hash_result  - our result
+ * @param convert_type  the type to return
+ * @return the error massage
+ */
 StatusType ConvertResult(HASH_RESULT hash_result, CONVERT_TYPE convert_type) {
     if (convert_type == ADD_CLAN) {
         if (hash_result == HASH_INVALID_INPUT) {
@@ -46,7 +54,17 @@ StatusType ConvertResult(HASH_RESULT hash_result, CONVERT_TYPE convert_type) {
     }
     return FAILURE;
 }
+
+
 /*----------------------------------------------------------------------------*/
+/**
+ * Add clan to the sysytem insert to heap ,insert to hash
+ * @param clanID  - id clan
+ * @return ALLOCATION_ERROR
+ * @return HASH_CLAN_ADDED,
+ * @return HASH_CLAN_DOES_NOT_EXISTS
+
+ */
 StatusType Oasis::OasisAddClan(int clanID) {
     ArrayHeap* temp_heap_clan=heap->CreateTempHeapClan(clanID);
     if (temp_heap_clan==NULL){
@@ -65,6 +83,14 @@ StatusType Oasis::OasisAddClan(int clanID) {
     return (ConvertResult(res,ADD_CLAN));
 }
 /*----------------------------------------------------------------------------*/
+/**
+ * Addplayer to system insert to clan , insert to players tree
+ * @param playerID  - player id
+ * @param score
+ * @param clan  - id clan
+ * @return FAILURE
+ * @return ALLOCATION_ERROR
+ */
 StatusType Oasis::OasisAddPlayer(int playerID, int score, int clan) {
     HASH_RESULT res = INITIAL;
     if(oasis_players->Is_Contain(oasis_players->getRoot(),playerID)){
@@ -80,6 +106,16 @@ StatusType Oasis::OasisAddPlayer(int playerID, int score, int clan) {
     return (ConvertResult(res, ADD_PLAYER));
 }
 /*----------------------------------------------------------------------------*/
+/**
+ *  makeing 2 clan fight
+ * @param clan1  - id clan 1
+ * @param clan2   id clan 2
+ * @param k1  - number of players that needed to be bigger  in clan1
+ * @param k2  - number of players that needed to be bigger  in clan2
+ * @return FAILURE
+ * @return ALLOCATION_ERROR
+ *
+ */
 StatusType Oasis::OasisClanFight(int clan1, int clan2, int k1, int k2){
     HASH_RESULT res = INITIAL;
     ArrayHeap* clan_heap=NULL;
@@ -88,10 +124,14 @@ StatusType Oasis::OasisClanFight(int clan1, int clan2, int k1, int k2){
         heap->deleteHeap(clan_heap);
     }
     return (ConvertResult(res,CLAN_FIGHT));
-
-   // return FAILURE;
 }
 /*----------------------------------------------------------------------------*/
+/**
+ *  Construtor build oasis
+ * @param n  number of clans in the array
+ * @param clanIDs  the array of clans to add
+ * @param status  return value
+ */
 Oasis::Oasis(int n, int *clanIDs,StatusType& status){
     hash_table=new DynamicHash(2*n);
     heap=new Heap(2*n);
@@ -107,7 +147,13 @@ Oasis::Oasis(int n, int *clanIDs,StatusType& status){
     }
     status= SUCCESS;
 }
+
 /*----------------------------------------------------------------------------*/
+/**
+ * get min clan in the system that is valid
+ * @param clan  the return clan that is min
+ * @return clan  the return clan that is min
+ */
 StatusType Oasis::OasisGetMinClan(int *clan){
     if (hash_table->GetNumClans()==0){
         return FAILURE;
@@ -115,13 +161,21 @@ StatusType Oasis::OasisGetMinClan(int *clan){
     *clan=heap->GetMinClanId();
     return SUCCESS;
 }
+
 /*----------------------------------------------------------------------------*/
+/**
+ * Destructor
+ */
 Oasis::~Oasis(){
     delete hash_table;
     delete heap;
     delete oasis_players;
 }
+
 /*----------------------------------------------------------------------------*/
+/**
+ * Print Oasis
+ */
 void Oasis::OasisPrint(){
     cout<<"Printing Hash:"<<endl;
     hash_table->PrintHash();
@@ -130,7 +184,12 @@ void Oasis::OasisPrint(){
    // cout<<"Printing System:"<<endl;
    // heap->PrintHeap();
 }
+
 /*----------------------------------------------------------------------------*/
+/**
+ * Print result acction need for debuger
+ * @param result  -return val
+ */
 void Oasis::OasisPrintActionResult(StatusType result){
     if (result==0){
         cout<<"SUCCESS"<<endl;
